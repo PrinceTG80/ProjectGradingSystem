@@ -15,6 +15,9 @@ export class AddProjectPage implements OnInit {
   public arrModule = [];
   public arrTasks = [];
   public arrObjectives = [];
+  public arrObjectivess = [];
+  public arrTaskss = [];
+  public arrModuless = [];
 
   constructor(public formBuilder: FormBuilder,
     public sharedService: SharedServiceService,
@@ -66,5 +69,22 @@ export class AddProjectPage implements OnInit {
     for(var i=0;i<sizeObjectives;i++){
         this.arrObjectives.push(this.sharedService.postData);
     }
+  }
+
+  appendObjective(objective){
+    this.arrObjectivess.push(objective);
+    console.log(this.arrObjectivess);
+  }
+
+  appendTask(task,time,taskName){
+    this.arrTaskss.push({"taskName": taskName,"task": task, "timeReq": time});
+    this.arrObjectivess = [];
+    console.log(this.arrTaskss);
+  }
+
+  appendModule(module,moduleName){
+    this.arrModuless.push({"moduleName": moduleName,"module": module});
+    this.arrTaskss = [];
+    console.log(this.arrModuless);
   }
 }

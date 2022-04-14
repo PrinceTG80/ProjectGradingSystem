@@ -72,7 +72,7 @@
                 <ion-label position="floating">Task: </ion-label>
                 <ion-input formControlName="taskTitle" type="text"></ion-input>
             </ion-item>
-          <ion-row *ngFor="let module of arrObjectives; let k = index;" [attr.data-index]='k' (click) = printit()>
+          <ion-row *ngFor="let module of arrObjectives; let k = index;" [attr.data-index]='k'>
             <ion-card class="card">
                 <ion-card-content>
                     <ion-row>
@@ -86,7 +86,7 @@
                                 <ion-label position="floating">Objective: </ion-label>
                                 <ion-input formControlName="objectiveTitle" type="text"></ion-input>
                             </ion-item>
-                            
+                            <ion-button (click) = "appendObjective(this.requestForm.value.objectiveTitle)">Add</ion-button>
                             <p class="prod_name">{{module.title}}</p>
                             <p class="category">{{module.category}}/{{module.subcategory}}</p>
                             <br>
@@ -106,7 +106,9 @@
             <ion-label position="floating">Time Required: </ion-label>
             <ion-input formControlName="timeReq" type="time"></ion-input>
         </ion-item>
+        <ion-button (click) = "appendTask(this.arrObjectivess,this.requestForm.value.timeReq,this.requestForm.value.taskTitle)">Add</ion-button>
         </ion-row>
+        <ion-button (click) = "appendModule(this.arrTaskss,this.requestForm.value.moduleTitle)">Add</ion-button>
       </ion-row>
 
           <ion-row>
