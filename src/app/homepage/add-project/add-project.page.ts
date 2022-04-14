@@ -27,6 +27,10 @@ export class AddProjectPage implements OnInit {
       tasks:['2'],
       objectives:['2'],
       title :'',
+      moduleTitle:'',
+      taskTitle:'',
+      objectiveTitle:'',
+      timeReq:'',
       description:'',
       arrModule: [this.sharedService.postData,this.sharedService.postData,this.sharedService.postData,this.sharedService.postData],
       image: File
@@ -36,6 +40,11 @@ export class AddProjectPage implements OnInit {
   getPostInfo(post,i) {
     const navigationExtras: NavigationExtras = { state: {data:post , postId: this.sharedService.myPostId[i]} };
     this.router.navigate(['homepage/my-project'], navigationExtras);
+    
+  }
+
+  printit(){
+    console.log(this.requestForm.value.moduleTitle,this.requestForm.value.taskTitle);
   }
 
   createArrModule(sizeModule){

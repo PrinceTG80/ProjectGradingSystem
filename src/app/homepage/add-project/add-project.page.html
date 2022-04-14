@@ -63,8 +63,16 @@
           </ion-col>  
       </ion-row>
       <ion-row *ngFor="let moduleo of arrModule; let i = index;" [attr.data-index]='i' >
+        <ion-item class="form-Control">
+            <ion-label position="floating">Module: </ion-label>
+            <ion-input formControlName="moduleTitle" type="text"></ion-input>
+        </ion-item>
         <ion-row *ngFor="let task of arrTasks; let j = index;" [attr.data-index]='j' >
-          <ion-row *ngFor="let module of arrObjectives; let k = index;" [attr.data-index]='k' (click)="getPostInfo(module,k)">
+            <ion-item class="form-Control">
+                <ion-label position="floating">Task: </ion-label>
+                <ion-input formControlName="taskTitle" type="text"></ion-input>
+            </ion-item>
+          <ion-row *ngFor="let module of arrObjectives; let k = index;" [attr.data-index]='k' (click) = printit()>
             <ion-card class="card">
                 <ion-card-content>
                     <ion-row>
@@ -72,6 +80,13 @@
                             <img src="{{module.attachments.image}}" class="image">
                         </ion-col>
                         <ion-col size="7" class="col2">
+                            
+                            
+                            <ion-item class="form-Control">
+                                <ion-label position="floating">Objective: </ion-label>
+                                <ion-input formControlName="objectiveTitle" type="text"></ion-input>
+                            </ion-item>
+                            
                             <p class="prod_name">{{module.title}}</p>
                             <p class="category">{{module.category}}/{{module.subcategory}}</p>
                             <br>
@@ -87,6 +102,10 @@
                 </ion-card-content>
             </ion-card>
           </ion-row>
+          <ion-item class="form-Control">
+            <ion-label position="floating">Time Required: </ion-label>
+            <ion-input formControlName="timeReq" type="time"></ion-input>
+        </ion-item>
         </ion-row>
       </ion-row>
 
