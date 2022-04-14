@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="homepage"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Add a new Project</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form id="postForm" [formGroup]="requestForm" (ngSubmit)="postRequest()" novalidate>
+      <ion-grid>
+          <ion-row class="coverbox1">
+              <ion-col size=3 class="nonePadding">
+                  <ion-label>Category</ion-label>
+              </ion-col>
+              <ion-col size=9 class="nonePadding">
+                  <ion-input class="nonePadding" formControlName="subcategory" readonly></ion-input>
+              </ion-col>
+          </ion-row>
+          <ion-row class="coverbox2" height=10%>
+              <ion-col size=3>
+                  <ion-label>Modules</ion-label>
+              </ion-col>
+              <ion-col size=6 style="padding-bottom: 0%;">
+                  <div class="rangerectangle">
+                      <ion-range formControlName="modules" min=3 max=10 width=70% value=2 (click)="createArrModule(this.requestForm.value.modules)"></ion-range>
+                  </div>
+              </ion-col>
+              <ion-col size=3>
+                  <ion-text>{{this.requestForm.value.modules}} Modules</ion-text>
+              </ion-col>
+          </ion-row>
+          <ion-row class="coverbox2" height=10%>
+            <ion-col size=3>
+                <ion-label>Tasks</ion-label>
+            </ion-col>
+            <ion-col size=6 style="padding-bottom: 0%;">
+                <div class="rangerectangle">
+                    <ion-range formControlName="tasks" min=2 max=10 width=70% value=2 (click)="createArrTasks(this.requestForm.value.tasks)"></ion-range>
+                </div>
+            </ion-col>
+            <ion-col size=3>
+                <ion-text>{{this.requestForm.value.tasks}} Tasks</ion-text>
+            </ion-col>
+            <!-- <ion-row>
+                <ion-col size=12 style="padding-top:0%;">
+                    <ion-text style="font-size:small;">Vendors available in your selected radius will be able to see your post</ion-text>
+                </ion-col>
+            </ion-row> -->
+        </ion-row>
+        <ion-row class="coverbox2" height=10%>
+          <ion-col size=3>
+              <ion-label>Objectives</ion-label>
+          </ion-col>
+          <ion-col size=6 style="padding-bottom: 0%;">
+              <div class="rangerectangle">
+                  <ion-range formControlName="objectives" min=2 max=10 width=70% value=2 (click)="createArrObjectives(this.requestForm.value.objectives)"></ion-range>
+              </div>
+          </ion-col>
+          <ion-col size=3>
+              <ion-text>{{this.requestForm.value.objectives}} Objectives</ion-text>
+          </ion-col>  
+      </ion-row>
+      <ion-row *ngFor="let moduleo of arrModule; let i = index;" [attr.data-index]='i' >
+        <ion-row *ngFor="let task of arrTasks; let j = index;" [attr.data-index]='j' >
+          <ion-row *ngFor="let module of arrObjectives; let k = index;" [attr.data-index]='k' (click)="getPostInfo(module,k)">
+            <ion-card class="card">
+                <ion-card-content>
+                    <ion-row>
+                        <ion-col size="3" class="col1">
+                            <img src="{{module.attachments.image}}" class="image">
+                        </ion-col>
+                        <ion-col size="7" class="col2">
+                            <p class="prod_name">{{module.title}}</p>
+                            <p class="category">{{module.category}}/{{module.subcategory}}</p>
+                            <br>
+                            <!-- <p>Range: {{user.range}} Km</p> -->
+                            <p class="date_time">Posted On: {{module.date}} at {{module.time}}</p>
+
+                            <!-- <p style=" font-weight: lighter;">{{user.subcategory}}</p> -->
+                        </ion-col>
+                        <!-- <ion-col size="2" class="col3">
+                            <ion-badge [color]="module.status === 'pending...' ? 'warning': module.status === 'successful' ? 'success':module.status === 'unsuccessful' ? 'danger':'' " class="status">{{post.status}}</ion-badge>
+                        </ion-col> -->
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+          </ion-row>
+        </ion-row>
+      </ion-row>
+
+          <ion-row>
+              <ion-textarea required="true" autoGrow="true" class="descriptionArea" rows="1" type="text" formControlName='description' placeholder="Please provide more details"></ion-textarea>
+          </ion-row>
+      </ion-grid>
+      <!-- <div class="posttextdiv">
+          <div class="posttextsubdiv">
+              <ion-textarea name="posttext" formControlName="title" placeholder="What are you looking for?"></ion-textarea>
+              <div>
+                  <ion-label for="image-input">
+                      <ion-input formControlName="image" type="file" (change)="upload($event)" accept=".png,.jpg" id="image-input" style="height: 1%; width: 1%; position: relative; top:1%"></ion-input>
+                      <ion-icon name="attach-outline" style="width: 75%; height: 100%;"></ion-icon>
+                  </ion-label>
+              </div>
+          </div>
+          <ion-button type="submit" fill="clear" icon-only style="color: black;">
+              <ion-icon name=send></ion-icon>
+          </ion-button>
+      </div> -->
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="msg-parent">
+      <form [formGroup]='requestForm'>
+          <ion-row class="ion-align-items-end">
+              <ion-col size="2">
+                  <ion-icon name="add-circle-outline" class="toolbar-icons"></ion-icon>
+              </ion-col>
+              <ion-col size="8">
+                  <ion-textarea required="true" autoGrow="true" class="message-input" formControlName="title" rows="1" placeholder="What are you looking for?"></ion-textarea>
+                  <ion-icon name="attach-outline" class="attachmentButton color-black toolbar-icons" (click)="presentPopover($event)"></ion-icon>
+              </ion-col>
+              <ion-col size="2">
+                  <button form="postForm" type="submit" style="background: transparent;">
+                      <ion-icon name="send" class="toolbar-icons"></ion-icon>
+              </button>
+              </ion-col>
+          </ion-row>
+          
+      </form>
+  </ion-toolbar>
+
+</ion-footer>
