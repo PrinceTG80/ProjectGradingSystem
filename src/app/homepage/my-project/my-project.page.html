@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar>
+
+      <ion-title>Project Id #{{postId}}</ion-title>
+      <ion-icon name="arrow-back-circle-outline" class="back_but" [routerLink]="['..']" slot="start"> </ion-icon>
+
+  </ion-toolbar>
+
+  <ion-list>
+      <ion-item>
+          <ion-col size="4">
+              <ion-label>Category</ion-label>
+          </ion-col>
+          <ion-col>
+              {{post.category}}/{{post.subcategory}}
+          </ion-col>
+      </ion-item>
+      <ion-item lines="none">
+          <ion-col size="4">
+              <ion-label>Title</ion-label>
+          </ion-col>
+          <ion-col>
+              {{post.title}}
+          </ion-col>
+      </ion-item>
+      <ion-item lines="none">
+          <ion-col size="4">
+              <ion-label>Description</ion-label>
+          </ion-col>
+          <ion-col class="description">
+              {{post.description}}
+          </ion-col>
+      </ion-item>
+      <ion-item>
+          <ion-col size="4">
+              <ion-label>Range</ion-label>
+          </ion-col>
+          <ion-col>
+              {{post.range}} KM
+          </ion-col>
+      </ion-item>
+      <ion-item>
+          <ion-col size="4">
+              <ion-label>Expires in</ion-label>
+          </ion-col>
+          <ion-col>
+              {{expiryHours}} Hrs.
+          </ion-col>
+      </ion-item>
+  </ion-list>
+
+  <!-- <p class="chat-header">Responses</p> -->
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+      <ion-item>
+          <ion-avatar slot="start">
+              <img src="assets/profile_images/circled_user.png">
+          </ion-avatar>
+          <ion-label>
+              <h2>Finn</h2>
+              <h3>I'm a big deal</h3>
+              <p>Listen, I've had a pretty messed up day...</p>
+          </ion-label>
+      </ion-item>
+
+      <ion-item>
+          <ion-avatar slot="start">
+              <img src="assets/profile_images/circled_user.png">
+          </ion-avatar>
+          <ion-label>
+              <h2>Han</h2>
+              <h3>Look, kid...</h3>
+              <p>I've got enough on my plate as it is, and I...</p>
+          </ion-label>
+      </ion-item>
+
+      <ion-item>
+          <ion-avatar slot="start">
+              <img src="assets/profile_images/circled_user.png">
+          </ion-avatar>
+          <ion-label>
+              <h2>Rey</h2>
+              <h3>I can handle myself</h3>
+              <p>You will remove these restraints and leave...</p>
+          </ion-label>
+      </ion-item>
+
+      <ion-item>
+          <ion-avatar slot="start">
+              <img src="assets/profile_images/circled_user.png">
+          </ion-avatar>
+          <ion-label>
+              <h2>Luke</h2>
+              <h3>Your thoughts betray you</h3>
+              <p>I feel the good in you, the conflict...</p>
+          </ion-label>
+      </ion-item>
+
+      <ion-item>
+          <ion-avatar slot="start">
+              <img src="assets/profile_images/circled_user.png">
+          </ion-avatar>
+          <ion-label>
+              <h2>Poe</h2>
+              <h3>New Ride</h3>
+              <p>I just upgraded my X-Wing. Next time...</p>
+          </ion-label>
+      </ion-item>
+
+      <ion-item>
+          <ion-avatar slot="start">
+              <img src="assets/profile_images/circled_user.png">
+          </ion-avatar>
+          <ion-label>
+              <h2>Ben</h2>
+              <h3>Move Along</h3>
+              <p>These aren't the droids you're looking for...</p>
+          </ion-label>
+      </ion-item>
+
+      <ion-item>
+          <ion-avatar slot="start">
+              <img src="assets/profile_images/circled_user.png">
+          </ion-avatar>
+          <ion-label>
+              <h2>Leia</h2>
+              <h3>You're My Only Hope</h3>
+              <p>I've placed information vital to the survival...</p>
+          </ion-label>
+      </ion-item>
+
+      <ion-item>
+          <ion-avatar slot="start">
+              <img src="assets/profile_images/circled_user.png">
+          </ion-avatar>
+          <ion-label>
+              <h2>Yoda</h2>
+              <h3>Size matters not</h3>
+              <p>Do or do not. There is no try...</p>
+          </ion-label>
+      </ion-item>
+  </ion-list>
+
+
+</ion-content>
+<ion-fab vertical="bottom" horizontal="start" class="postDate">
+  Posted On {{post.date}} at {{post.time}}
+</ion-fab>
+<!-- <ion-footer>posted on {{post.date}} on {{post.time}}</ion-footer> -->
