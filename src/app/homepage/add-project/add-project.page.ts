@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { SharedServiceService } from 'src/app/service/shared-service.service';
 import { NavigationExtras, Router } from '@angular/router';
+import { DatabaseService } from 'src/app/service/database.service';
 
 @Component({
   selector: 'app-add-project',
@@ -18,10 +19,13 @@ export class AddProjectPage implements OnInit {
   public arrObjectivess = [];
   public arrTaskss = [];
   public arrModuless = [];
+  public timeReqs = '00:00';
+  public totalTime = '00:00';
 
   constructor(public formBuilder: FormBuilder,
     public sharedService: SharedServiceService,
-    public router: Router) { }
+    public router: Router,
+    public db: DatabaseService) { }
 
   ngOnInit() {
     this.requestForm = this.formBuilder.group({
@@ -79,12 +83,22 @@ export class AddProjectPage implements OnInit {
   appendTask(task,time,taskName){
     this.arrTaskss.push({"taskName": taskName,"task": task, "timeReq": time});
     this.arrObjectivess = [];
+    this.timeReqs = this.sharedService.addTimes(this.timeReqs,time);
+    console.log(this.timeReqs);
     console.log(this.arrTaskss);
   }
 
   appendModule(module,moduleName){
-    this.arrModuless.push({"moduleName": moduleName,"module": module});
+    this.arrModuless.push({"moduleName": moduleName,"module": module, "timeModule": this.timeReqs});
+    this.totalTime = this.sharedService.addTimes(this.totalTime,this.timeReqs);
+    this.timeReqs = "00:00";
     this.arrTaskss = [];
     console.log(this.arrModuless);
+  }
+
+  appendProject(project,projectTitle){
+    this.db.addData(project,this.totalTime);
+    this.arrModuless = [];
+    console.log(project, projectTitle);
   }
 }
