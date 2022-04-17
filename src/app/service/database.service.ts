@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import firebase from 'firebase/compat/app';
+import { element } from 'protractor';
 import { SharedServiceService } from './shared-service.service';
 @Injectable({
   providedIn: 'root'
@@ -13,38 +15,34 @@ export class DatabaseService {
     public sharedService: SharedServiceService
   ) { 
     this.db = db;
-    this.dataCollection = db.collection<any>('users');
+    this.dataCollection = db.collection<any>('projects');
   }
 
-  async addData(data: any) {
-    const totalUsersSnapshot = await this.db
-      .collection<any>('users')
-      .doc('totalusers')
+  async addData(data: any,time) {
+    const totalProjectsSnapshot = await this.db
+      .collection<any>('projects')
+      .doc('totalProjects')
       .get()
       .toPromise();
-    const totalUsers = totalUsersSnapshot.data().userId;
-    const dataSend = {
-      address: data.address,
-      isBusiness: data.isBusiness,
-      userEmail: data.userEmail,
-      userId: totalUsers + 1,
-      userName: data.userName,
-      userPassword: data.userPassword,
-      userPhone: data.userPhone,
-    };
+    const totalProjects = totalProjectsSnapshot.data().projectId;
     const newUser = this.db
-      .collection<any>('users')
-      .doc((totalUsers + 1).toString())
-      .set(dataSend);
-    this.initializeUser(dataSend, totalUsers + 1, false);
+      .collection<any>('projects')
+      .doc((totalProjects + 1).toString())
+      .set({ modules : [], time : time, status : 'pending', startTime: '00:00', endTime: '00:00'});
+    for (let i = 0; i < data.length; i++) {
+      this.db
+      .collection<any>('projects')
+      .doc((totalProjects + 1).toString())
+      .update({
+        modules: firebase.firestore.FieldValue.arrayUnion(data[i]),
+      });
+    }
+    
     const snapshot = this.db
-      .collection<any>('users')
-      .doc('totalusers')
-      .set({ userId: totalUsers + 1 });
-    this.db
-      .collection<any>('favorites')
-      .doc((totalUsers + 1).toString())
-      .set({ favOffers: [] });
+      .collection<any>('projects')
+      .doc('totalProjects')
+      .set({ projectId: totalProjects + 1 });
+
   }
 
 }

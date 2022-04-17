@@ -24,7 +24,7 @@
               </ion-col>
               <ion-col size=6 style="padding-bottom: 0%;">
                   <div class="rangerectangle">
-                      <ion-range formControlName="modules" min=3 max=10 width=70% value=2 (click)="createArrModule(this.requestForm.value.modules)"></ion-range>
+                      <ion-range formControlName="modules" min=1 max=10 width=70% value=2 (click)="createArrModule(this.requestForm.value.modules)"></ion-range>
                   </div>
               </ion-col>
               <ion-col size=3>
@@ -37,7 +37,7 @@
             </ion-col>
             <ion-col size=6 style="padding-bottom: 0%;">
                 <div class="rangerectangle">
-                    <ion-range formControlName="tasks" min=2 max=10 width=70% value=2 (click)="createArrTasks(this.requestForm.value.tasks)"></ion-range>
+                    <ion-range formControlName="tasks" min=1 max=10 width=70% value=2 (click)="createArrTasks(this.requestForm.value.tasks)"></ion-range>
                 </div>
             </ion-col>
             <ion-col size=3>
@@ -55,7 +55,7 @@
           </ion-col>
           <ion-col size=6 style="padding-bottom: 0%;">
               <div class="rangerectangle">
-                  <ion-range formControlName="objectives" min=2 max=10 width=70% value=2 (click)="createArrObjectives(this.requestForm.value.objectives)"></ion-range>
+                  <ion-range formControlName="objectives" min=1 max=10 width=70% value=2 (click)="createArrObjectives(this.requestForm.value.objectives)"></ion-range>
               </div>
           </ion-col>
           <ion-col size=3>
@@ -108,9 +108,9 @@
         </ion-item>
         <ion-button (click) = "appendTask(this.arrObjectivess,this.requestForm.value.timeReq,this.requestForm.value.taskTitle)">Add</ion-button>
         </ion-row>
-        <ion-button (click) = "appendModule(this.arrTaskss,this.requestForm.value.moduleTitle)">Add</ion-button>
+        <ion-button (click) = "appendModule(this.arrTaskss,this.requestForm.value.moduleTitle)">Add Module</ion-button>
       </ion-row>
-
+      <ion-button (click) = "appendProject(this.arrModuless,this.requestForm.value.moduleTitle)">Add Project</ion-button>
           <ion-row>
               <ion-textarea required="true" autoGrow="true" class="descriptionArea" rows="1" type="text" formControlName='description' placeholder="Please provide more details"></ion-textarea>
           </ion-row>
