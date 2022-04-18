@@ -20,7 +20,7 @@ export class SharedServiceService {
     expiryDate: 'expiry',
     time: 'time',
     attachments: {
-      image: '../assets/images/Romantic.jpg',
+      image: '../assets/images/img.jpg',
       camera: '',
       audio: '',
       document: '',

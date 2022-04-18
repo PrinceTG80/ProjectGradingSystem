@@ -33,10 +33,12 @@
               </ion-button>
           </ion-col>
       </ion-row>
-      <ion-row *ngFor="let post of this.sharedService.myPost; let i = index;" [attr.data-index]='i' (click)="getPostInfo(post,i)">
-          <ion-card class="{{post.category}} card">
+      <ion-row class="row" *ngFor="let post of this.sharedService.myPost; let i = index;" [attr.data-index]='i' (click)="getPostInfo(post,i)">
+        <ion-col size = "1"></ion-col>
+        <ion-card class=" card">
               <ion-card-content>
                   <ion-row>
+                      
                       <ion-col size="3" class="col1">
                           <img src="{{post.attachments.image}}" class="image">
                       </ion-col>
@@ -47,22 +49,19 @@
                           <!-- <p>Range: {{user.range}} Km</p> -->
                           <p class="date_time">Posted On: {{post.date}} at {{post.time}}</p>
 
-<<<<<<< HEAD
-</ion-content> 
-
-=======
                           <!-- <p style=" font-weight: lighter;">{{user.subcategory}}</p> -->
                       </ion-col>
                       <ion-col size="2" class="col3">
                           <ion-badge [color]="post.status === 'pending...' ? 'warning': post.status === 'successful' ? 'success':post.status === 'unsuccessful' ? 'danger':'' " class="status">{{post.status}}</ion-badge>
                       </ion-col>
+                      
                   </ion-row>
               </ion-card-content>
           </ion-card>
+          <ion-col size = "1"></ion-col>
       </ion-row>
     </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-icon name="add-circle" class="create" [routerLink]="['add-project']"></ion-icon>
   </ion-fab>
 </ion-content>
->>>>>>> origin/main
