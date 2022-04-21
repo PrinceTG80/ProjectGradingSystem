@@ -45,4 +45,24 @@ export class DatabaseService {
 
   }
 
+  async getProjects() {
+    this.dataCollection = this.db.collection<any>('projects');
+    let snapshot: any[] = [];
+    for (let i = 0; i < 3; i++) {
+      const element = this.dataCollection
+      .doc((i + 1).toString())
+      .get()
+      .toPromise();
+      console.log((await element).data());
+      const projectex = (await element).data();
+      this.sharedService.projects.push(projectex);
+      snapshot.push((await element).data());
+    }
+
+    console.log(this.sharedService.projects[0]);
+    // console.log(snapshot);
+    // const array: any[] =[];
+    // Promise.resolve(snapshot).then(val => array.push(val));
+  }
+
 }
