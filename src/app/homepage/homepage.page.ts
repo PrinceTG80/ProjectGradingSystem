@@ -29,4 +29,9 @@ export class HomepagePage implements OnInit {
     this.router.navigate(['homepage/my-project'], navigationExtras);
   }
 
+  getStatus(event,i){
+    this.db.updateData(event.target.value,i);
+    console.log(event.target.value,i);
+  }
+
 }

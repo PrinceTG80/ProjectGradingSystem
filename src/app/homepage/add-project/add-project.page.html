@@ -62,6 +62,10 @@
               <ion-text>{{this.requestForm.value.objectives}} Objectives</ion-text>
           </ion-col>  
       </ion-row>
+      <ion-item class="form-Control" style = "width: 100%">
+            <ion-label position="floating">Project Title: </ion-label>
+            <ion-input formControlName="projectTitle" type="text"></ion-input>
+        </ion-item>
       <ion-row *ngFor="let moduleo of arrModule; let i = index;" [attr.data-index]='i' >
         <ion-item class="form-Control" style = "width: 100%">
                 <ion-label position="floating">Module: </ion-label>
@@ -111,7 +115,7 @@
         </ion-row>
         <ion-button (click) = "appendModule(this.arrTaskss,this.requestForm.value.moduleTitle)">Add Module</ion-button>
       </ion-row>
-      <ion-button (click) = "appendProject(this.arrModuless,this.requestForm.value.moduleTitle)">Add Project</ion-button>
+      <ion-button (click) = "appendProject(this.arrModuless,this.requestForm.value.projectTitle)">Add Project</ion-button>
           <ion-row>
               <ion-textarea required="true" autoGrow="true" class="descriptionArea" rows="1" type="text" formControlName='description' placeholder="Please provide more details"></ion-textarea>
           </ion-row>

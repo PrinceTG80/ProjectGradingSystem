@@ -41,25 +41,24 @@
                           <img src="../assets/images/Romantic.jpg" class="image">
                       </ion-col>
                       <ion-col size="7" class="col2">
-                          <p class="prod_name">ProjectTitle</p>
+                          <p class="prod_name">{{project.projectTitle}}</p>
                           <p class="category">{{project.modules[0].moduleName}}</p>
                           <br>
                           <!-- <p>Range: {{user.range}} Km</p> -->
-                          <p class="date_time">Posted On: {{post.date}} at {{post.time}}</p>
+                          <p class="date_time">Posted On: </p>
 
                           <!-- <p style=" font-weight: lighter;">{{user.subcategory}}</p> -->
                       </ion-col>
-                      <ion-col size="2" class="col3">
-                          <ion-badge [color]="post.status === 'pending...' ? 'warning': post.status === 'successful' ? 'success':post.status === 'unsuccessful' ? 'danger':'' " class="status">{{post.status}}</ion-badge>
-                      </ion-col>
+                      <!-- <ion-col size="2" class="col3">
+                          <ion-badge [color]="project.status === 'pending...' ? 'warning': project.status === 'successful' ? 'success':project.status === 'unsuccessful' ? 'danger':'' " class="status">{{post.status}}</ion-badge>
+                      </ion-col> -->
                         <ion-item style = "width: 100%;">
                           <ion-label>Status</ion-label>
-                          <ion-select placeholder="Select One" >
-                            <ion-select-option value="pe">Pending</ion-select-option>
-                            <ion-select-option value="s">Started</ion-select-option>
-                            <ion-select-option value="pr">Progress</ion-select-option>
-                            <ion-select-option value="c">Complete</ion-select-option>
-
+                          <ion-select placeholder="Select One" (ionChange) = "getStatus($event,i)">
+                            <ion-select-option [value]="pe">Pending</ion-select-option>
+                            <ion-select-option [value]="s">Started</ion-select-option>
+                            <ion-select-option [value]="pr">Progress</ion-select-option>
+                            <ion-select-option [value]="c">Complete</ion-select-option>
                           </ion-select>
                         </ion-item>
                   </ion-row>
