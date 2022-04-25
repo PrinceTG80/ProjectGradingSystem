@@ -9,6 +9,7 @@ export class SharedServiceService {
 
   public projects = [];
 
+  public grade = 0;
   myPostCategories = ['IT','Software','Hardware','Professional','Mixed'];
 
   postData = {

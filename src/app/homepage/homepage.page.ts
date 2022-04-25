@@ -21,7 +21,7 @@ export class HomepagePage implements OnInit {
   }
 
   displayProjects(){
-    console.log(this.sharedService.projects[0].modules[0].moduleName);
+    
   }
 
   getPostInfo(post,i) {
@@ -34,4 +34,8 @@ export class HomepagePage implements OnInit {
     console.log(event.target.value,i);
   }
 
+  navigateto(i){
+    this.db.generateReport(i);
+    console.log("navigated");
+  }
 }
