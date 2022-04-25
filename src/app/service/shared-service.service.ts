@@ -7,6 +7,9 @@ export class SharedServiceService {
 
   constructor() { }
 
+  public projects = [];
+
+  public grade = 0;
   myPostCategories = ['IT','Software','Hardware','Professional','Mixed'];
 
   postData = {
@@ -31,6 +34,8 @@ export class SharedServiceService {
     maxLong: 0,
     userName: 'Tushar',
   };
+
+  status = ["pending","started","completed"];
 
   myPost = [this.postData,this.postData,this.postData,this.postData];
 

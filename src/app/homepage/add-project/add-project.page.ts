@@ -35,6 +35,7 @@ export class AddProjectPage implements OnInit {
       objectives:['2'],
       title :'',
       moduleTitle:'',
+      projectTitle:'',
       taskTitle:'',
       objectiveTitle:'',
       timeReq:'',
@@ -97,7 +98,7 @@ export class AddProjectPage implements OnInit {
   }
 
   appendProject(project,projectTitle){
-    this.db.addData(project,this.totalTime);
+    this.db.addData(project,this.totalTime,projectTitle);
     this.arrModuless = [];
     console.log(project, projectTitle);
   }
