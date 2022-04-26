@@ -1,11 +1,11 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header [translucent]="true">
+    <ion-toolbar>
       <ion-buttons slot="start">
-          <ion-back-button defaultHref="homepage"></ion-back-button>
+        <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Add a new Project</ion-title>
-  </ion-toolbar>
-</ion-header>
+      <ion-title>Projects</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
   <form id="postForm" [formGroup]="requestForm" (ngSubmit)="postRequest()" novalidate>
@@ -15,7 +15,7 @@
                   <ion-label>Category</ion-label>
               </ion-col>
               <ion-col size=9 class="nonePadding">
-                  <ion-input class="nonePadding" formControlName="subcategory" readonly></ion-input>
+                  <ion-input class="nonePadding"  type = "text"></ion-input>
               </ion-col>
           </ion-row>
           <ion-row class="coverbox2" height=10%>
