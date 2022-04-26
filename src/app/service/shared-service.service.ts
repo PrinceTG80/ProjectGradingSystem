@@ -10,6 +10,10 @@ export class SharedServiceService {
   public projects = [];
 
   public grade = 0;
+
+  public reportFract = [];
+  public reportLabel = [];
+
   myPostCategories = ['IT','Software','Hardware','Professional','Mixed'];
 
   postData = {

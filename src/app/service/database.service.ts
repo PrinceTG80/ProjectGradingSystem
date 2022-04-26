@@ -150,9 +150,19 @@ export class DatabaseService {
         else{
            grade = 0;
         }
-     }
-     this.sharedService.grade = grade * factor;
-    console.log(grade * factor);
+    }
+    this.sharedService.grade = grade * factor;
+    this.sharedService.reportFract = [];
+    this.sharedService.reportLabel = [];
+    for (let j = 0; j<this.sharedService.projects[i].modules.length;j++){
+      for(let k = 0; k<this.sharedService.projects[i].modules[j].module.length;k++){
+        let hours = this.sharedService.projects[i].modules[j].module[k].timeReq.split(':');
+        this.sharedService.reportFract.push(Number(hours[0])* 3600 + Number(hours[1]) * 60 );
+        this.sharedService.reportLabel.push(this.sharedService.projects[i].modules[j].module[k].taskName);
+      }
+    }
+    
+    console.log(this.sharedService.reportFract,this.sharedService.reportLabel);
     //console.log(this.sharedService.projects[i].timeTaken,this.sharedService.projects[i].time);
   }
 }
