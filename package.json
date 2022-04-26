@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~13.2.2",
     "@angular/router": "~13.2.2",
     "@ionic/angular": "^6.0.0",
+    "chart.js": "^3.7.1",
     "firebase": "^9.6.11",
     "luxon": "^2.3.2",
     "rxjs": "~6.6.0",
