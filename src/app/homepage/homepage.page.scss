@@ -49,10 +49,22 @@ select {
 
 .card {
     height: 10%;
-    background-color: lighten(#ffed75, 20%);
+    background-color: lighten(#9bbacc, 20%);
     padding: 0px 0px 0px 0px !important;
     border-radius: 1px;
     box-shadow: 0%;
+    margin-right: 3%;
+    margin-left: 3%;
+    /*display: flex;
+    align-items: center;
+    justify-content: center;*/
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .col1 {
@@ -63,8 +75,8 @@ select {
 
 .image {
     display: block;
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 110%;
     text-align: center;
     // object-fit: inherit;
     border-radius: 50% !important;
@@ -73,11 +85,14 @@ select {
 .prod_name {
     color: black;
     text-shadow: none;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .status {
     --background: #245666;
-    border-radius: 0%;
+    border-radius: 2%;
+    font-size: 20px;
     font-weight: lighter;
     position: relative;
     bottom: 0;
@@ -93,7 +108,7 @@ p {
 }
 
 .date_time {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .create {
@@ -109,6 +124,10 @@ p {
 
 ion-card-content {
     padding: 20px 0px 20px 0px !important;
+}
+
+.category{
+    font-size: large;
 }
 
 .categoryFilter {
