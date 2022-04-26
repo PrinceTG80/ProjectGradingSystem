@@ -62,16 +62,21 @@
               <ion-text>{{this.requestForm.value.objectives}} Objectives</ion-text>
           </ion-col>  
       </ion-row>
-      <ion-row *ngFor="let moduleo of arrModule; let i = index;" [attr.data-index]='i' >
-        <ion-item class="form-Control">
+
+      <ion-row class="row" *ngFor="let moduleo of arrModule; let i = index;" [attr.data-index]='i' >
+
+        <ion-item class="form-Control row" >
             <ion-label position="floating">Module: </ion-label>
             <ion-input formControlName="moduleTitle" type="text"></ion-input>
         </ion-item>
-        <ion-row *ngFor="let task of arrTasks; let j = index;" [attr.data-index]='j' >
+        
+
+        <ion-row class = "row" *ngFor="let task of arrTasks; let j = index;" [attr.data-index]='j' >
             <ion-item class="form-Control">
                 <ion-label position="floating">Task: </ion-label>
                 <ion-input formControlName="taskTitle" type="text"></ion-input>
             </ion-item>
+            <br>
           <ion-row *ngFor="let module of arrObjectives; let k = index;" [attr.data-index]='k'>
             <ion-card class="card">
                 <ion-card-content>

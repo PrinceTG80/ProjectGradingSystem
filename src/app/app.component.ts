@@ -11,7 +11,7 @@ export class AppComponent {
     { title: 'Login', url: '/login', icon: 'log-in' },
     { title: 'Add Project', url: '/homepage/add-project', icon: 'add' },
     { title: 'View Project', url: '/homepage', icon: 'eye' },
-    { title: 'Search', url: '/folder/Trash', icon: 'search' },
+    { title: 'Search', url: '/search', icon: 'search' },
     { title: 'About Us', url: '/aboutus', icon: 'information-circle' },
     { title: 'Contact Us', url: '/contactus', icon: 'call' },
     { title: 'Logout', url: '/folder/Spam', icon: 'log-out' },

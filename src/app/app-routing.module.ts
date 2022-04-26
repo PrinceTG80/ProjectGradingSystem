@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'contactus',
     loadChildren: () => import('./contactus/contactus.module').then( m => m.ContactusPageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   }
 
 ];
