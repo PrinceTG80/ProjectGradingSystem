@@ -44,7 +44,6 @@ export class DatabaseService {
       .collection<any>('projects')
       .doc('totalProjects')
       .set({ projectId: totalProjects + 1 });
-
   }
 
   async getProjects() {
@@ -164,5 +163,38 @@ export class DatabaseService {
     
     console.log(this.sharedService.reportFract,this.sharedService.reportLabel);
     //console.log(this.sharedService.projects[i].timeTaken,this.sharedService.projects[i].time);
+  }
+
+  async addUser() {
+    const totalUsersSnapshot = await this.db
+      .collection<any>('users')
+      .doc('totalusers')
+      .get()
+      .toPromise();
+    const totalUsers = totalUsersSnapshot.data().userId;
+    const newUser = this.db
+      .collection<any>('users')
+      .doc((totalUsers + 1).toString())
+      .set({ name: this.sharedService.registerData.name, email: this.sharedService.registerData.email, pwd: this.sharedService.registerData.pwd});
+    const snapshot = this.db
+      .collection<any>('users')
+      .doc('totalusers')
+      .set({ userId: totalUsers + 1 });
+  }
+
+  async checkUser(email,password): Promise<boolean> {
+    let exists = false;
+    this.dataCollection = this.db.collection<any>('users', (ref) =>
+      ref.where('email', '==', email)
+    );
+
+    const snapshot = await this.dataCollection.get().toPromise();
+
+    if (!snapshot.empty) {
+      snapshot.forEach((doc) => {
+        exists = true;
+      });
+    }
+    return Promise.resolve(exists);
   }
 }

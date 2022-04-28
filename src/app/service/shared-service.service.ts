@@ -14,6 +14,12 @@ export class SharedServiceService {
   public reportFract = [];
   public reportLabel = [];
 
+  registerData = {
+    name: 'UserName',
+    email: 'mail',
+    pwd: 'Pass@123'
+  }
+
   myPostCategories = ['IT','Software','Hardware','Professional','Mixed'];
 
   postData = {
