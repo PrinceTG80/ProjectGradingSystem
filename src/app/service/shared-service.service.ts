@@ -22,6 +22,8 @@ export class SharedServiceService {
 
   myPostCategories = ['IT','Software','Hardware','Professional','Mixed'];
 
+  exists = false;
+
   postData = {
     subcategory: 'SUBCATEGORY',
     category: 'CATEGORY',

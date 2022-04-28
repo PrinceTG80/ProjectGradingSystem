@@ -182,7 +182,7 @@ export class DatabaseService {
       .set({ userId: totalUsers + 1 });
   }
 
-  async checkUser(email,password): Promise<boolean> {
+  async checkUser(email,password) {
     let exists = false;
     this.dataCollection = this.db.collection<any>('users', (ref) =>
       ref.where('email', '==', email)
@@ -195,6 +195,7 @@ export class DatabaseService {
         exists = true;
       });
     }
-    return Promise.resolve(exists);
+
+    this.sharedService.exists = exists;
   }
 }

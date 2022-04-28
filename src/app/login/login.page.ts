@@ -26,8 +26,12 @@ export class LoginPage implements OnInit {
     });
   }
 
-  doLogin(email,password){
-    let exists = this.db.checkUser(email,password);
-    console.log(exists);
+  async doLogin(email,password){
+    await this.db.checkUser(email,password);
+    console.log(this.sharedService.exists);
+    if(this.sharedService.exists){
+      this.router.navigateByUrl('viewpage');
+    }
   }
+
 }
